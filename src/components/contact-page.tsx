@@ -39,9 +39,8 @@ export function ContactPage() {
           <div className="contact-details__block">
             <p className="contact-section-label">Hours</p>
             <div className="contact-hours-list">
-              {organization.openingHours.map((item) => (
-                <p key={item.day}><strong>{item.day}</strong><span>{item.hours}</span></p>
-              ))}
+              <p>{organization.openingHours.weekdays}</p>
+              <p>{organization.openingHours.sunday}</p>
             </div>
           </div>
           <div className="contact-map" aria-label="Location map">

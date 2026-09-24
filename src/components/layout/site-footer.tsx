@@ -53,12 +53,12 @@ export function SiteFooter() {
             <div className="site-footer__hours">
               <Clock3 aria-hidden="true" />
               <span>
-                {organization.openingHours.map((item) => (
-                  <span className="site-footer__hours-row" key={item.day}>
-                    <strong>{item.day}</strong>
-                    <span>{item.hours}</span>
-                  </span>
-                ))}
+                <span className="site-footer__hours-row">
+                  {organization.openingHours.weekdays}
+                </span>
+                <span className="site-footer__hours-row">
+                  {organization.openingHours.sunday}
+                </span>
               </span>
             </div>
             <span className="site-footer__local-time"><span className="footer-live-dot" aria-hidden="true" /><LiveDateTime /></span>

@@ -27,11 +27,15 @@ for (const confirmedDonationValue of ["accountNumber", "Bank Mandiri", "14500106
 for (const confirmedValue of [
   "Suryani Institute for Mental Health (SIMH)",
   "Jl. Gandapura No. 30",
-  "Monday",
-  "Sunday",
+  "Mon to Sat",
+  "Sun",
   "TBD",
 ]) {
   assert.match(source, new RegExp(confirmedValue.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")), `confirmed organization value is missing: ${confirmedValue}`);
+}
+
+for (const footerHoursValue of ["Mon to Sat: 08.00 AM - 06.00 PM", "Sun: Closed"]) {
+  assert.match(source, new RegExp(footerHoursValue.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")), `footer hours summary is missing: ${footerHoursValue}`);
 }
 
 console.log("Product scope check passed.");

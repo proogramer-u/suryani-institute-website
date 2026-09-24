@@ -10,15 +10,10 @@ export const organization = {
     locality: "Kesiman Kertalangu, Kec. Denpasar Tim.",
     region: "Kota Denpasar, Bali 80237, Indonesia",
   },
-  openingHours: [
-    { day: "Monday", hours: "8:00 AM - 6:00 PM" },
-    { day: "Tuesday", hours: "8:00 AM - 6:00 PM" },
-    { day: "Wednesday", hours: "8:00 AM - 6:00 PM" },
-    { day: "Thursday", hours: "8:00 AM - 6:00 PM" },
-    { day: "Friday", hours: "8:00 AM - 6:00 PM" },
-    { day: "Saturday", hours: "8:00 AM - 6:00 PM" },
-    { day: "Sunday", hours: "Closed" },
-  ],
+  openingHours: {
+    weekdays: "Mon to Sat: 08.00 AM - 06.00 PM",
+    sunday: "Sun: Closed",
+  },
   instagram: "https://www.instagram.com/suryaniinstitute/",
   facebook: "https://www.facebook.com/suryaniinstitute/",
   donation: {

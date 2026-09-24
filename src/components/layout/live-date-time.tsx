@@ -2,15 +2,6 @@
 
 import { useEffect, useState } from "react";
 
-function formatDate(date: Date) {
-  return new Intl.DateTimeFormat(undefined, {
-    weekday: "short",
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  }).format(date);
-}
-
 function formatTime(date: Date) {
   return new Intl.DateTimeFormat(undefined, {
     hour: "numeric",
@@ -36,7 +27,6 @@ export function LiveDateTime() {
 
   return (
     <span className="footer-live-time">
-      <time dateTime={now.toISOString()}>{formatDate(now)}</time>
       <time dateTime={now.toISOString()}>{formatTime(now)}</time>
     </span>
   );
