@@ -20,8 +20,18 @@ for (const removed of ["Get Help", "Our Research", "Research collaboration", "Pa
   assert.doesNotMatch(source, new RegExp(removed.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")), `removed scope remains: ${removed}`);
 }
 
-for (const privateDonationValue of ["accountNumber", "Bank Mandiri", "1450010622971"]) {
-  assert.doesNotMatch(source, new RegExp(privateDonationValue), `unapproved donation detail remains: ${privateDonationValue}`);
+for (const confirmedDonationValue of ["accountNumber", "Bank Mandiri", "1450010622971"]) {
+  assert.match(source, new RegExp(confirmedDonationValue), `confirmed donation detail is missing: ${confirmedDonationValue}`);
+}
+
+for (const confirmedValue of [
+  "Suryani Institute for Mental Health (SIMH)",
+  "Jl. Gandapura No. 30",
+  "Monday",
+  "Sunday",
+  "TBD",
+]) {
+  assert.match(source, new RegExp(confirmedValue.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")), `confirmed organization value is missing: ${confirmedValue}`);
 }
 
 console.log("Product scope check passed.");

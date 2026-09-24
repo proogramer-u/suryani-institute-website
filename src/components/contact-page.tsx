@@ -38,19 +38,19 @@ export function ContactPage() {
           </div>
           <div className="contact-details__block">
             <p className="contact-section-label">Hours</p>
-            <p>{organization.hours}</p>
+            <div className="contact-hours-list">
+              {organization.openingHours.map((item) => (
+                <p key={item.day}><strong>{item.day}</strong><span>{item.hours}</span></p>
+              ))}
+            </div>
           </div>
           <div className="contact-map" aria-label="Location map">
             <Image src="/placeholder.svg" alt="" fill sizes="(max-width: 767px) 100vw, 42vw" aria-hidden="true" />
-            <a className="contact-map__link" href={organization.directions} target="_blank" rel="noreferrer">Get directions</a>
+            <span className="contact-map__link">Map link: TBD</span>
           </div>
           <div className="contact-socials">
             <a href={organization.instagram} target="_blank" rel="noreferrer"><span>ig</span>Instagram</a>
             <a href={organization.facebook} target="_blank" rel="noreferrer"><span>f</span>Facebook</a>
-          </div>
-          <div className="contact-details__block">
-            <p className="contact-section-label">Google profile</p>
-            <a href={organization.googleReviews.href} target="_blank" rel="noreferrer">{organization.googleReviews.rating} stars · {organization.googleReviews.count} reviews</a>
           </div>
         </div>
 

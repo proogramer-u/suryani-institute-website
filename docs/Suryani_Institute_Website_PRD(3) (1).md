@@ -31,6 +31,22 @@ The website explains SIMH's community-based and culturally grounded work, helps 
 | CMS | Structured editorial content and publishing workflow; navigation and page structure remain controlled. |
 | Content state | Mock content remains visibly labelled until approved SIMH content is available. |
 
+### Confirmed Public Information
+
+- Organization: Suryani Institute for Mental Health (SIMH)
+- Phone: (0361) 467553
+- Email: info@suryani-institute.com
+- Address: Jl. Gandapura No. 30, Kesiman Kertalangu, Kec. Denpasar Tim., Kota Denpasar, Bali 80237, Indonesia
+- Opening hours: Monday-Saturday, 8:00 AM-6:00 PM; Sunday closed
+- Instagram and Facebook links are approved for public display.
+- Donation recipient: Suryani Institute for Mental Health Foundation
+- Donation bank: Bank Mandiri, Sanur - Bali branch
+- Donation account number: 1450010622971
+- Donation currency: TBD
+- Donation receipt or confirmation process: TBD
+
+Unconfirmed information must remain `TBD` and must not be invented in copy, structured data, or interface labels.
+
 The launch scope does not include a clinical support-request workflow, emergency-response workflow, research collaboration workflow, volunteer application workflow, or partnership and sponsorship workflow.
 
 ## Product Principles

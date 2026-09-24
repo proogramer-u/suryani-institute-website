@@ -49,8 +49,18 @@ export function SiteFooter() {
             <p className="site-footer__section-title" id="footer-contact-title">Contact</p>
             <a href={organization.phone.href}><Phone aria-hidden="true" />{organization.phone.label}</a>
             <a href={`mailto:${organization.email}`}><Mail aria-hidden="true" />{organization.email}</a>
-            <a href={organization.directions} target="_blank" rel="noreferrer"><MapPin aria-hidden="true" />{organization.address.line}, Denpasar, Bali</a>
-            <span><Clock3 aria-hidden="true" />{organization.hours}</span>
+            <span><MapPin aria-hidden="true" />{organization.address.line}, {organization.address.locality}, {organization.address.region}</span>
+            <div className="site-footer__hours">
+              <Clock3 aria-hidden="true" />
+              <span>
+                {organization.openingHours.map((item) => (
+                  <span className="site-footer__hours-row" key={item.day}>
+                    <strong>{item.day}</strong>
+                    <span>{item.hours}</span>
+                  </span>
+                ))}
+              </span>
+            </div>
             <span className="site-footer__local-time"><span className="footer-live-dot" aria-hidden="true" /><LiveDateTime /></span>
           </section>
         </div>
