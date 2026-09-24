@@ -5,6 +5,8 @@ const files = [
   "src/lib/navigation.ts",
   "src/components/layout/primary-navigation.tsx",
   "src/components/layout/site-footer.tsx",
+  "src/app/admin/page.tsx",
+  "src/app/globals.css",
   "src/components/homepage.tsx",
   "src/data/homepage.ts",
   "src/data/organization.ts",
@@ -37,5 +39,11 @@ for (const confirmedValue of [
 for (const footerHoursValue of ["Mon to Sat: 08.00 AM - 06.00 PM", "Sun: Closed"]) {
   assert.match(source, new RegExp(footerHoursValue.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")), `footer hours summary is missing: ${footerHoursValue}`);
 }
+
+for (const adminResponsiveMarker of ["data-label", "menuButtonRef", "event.key === \"Escape\""]) {
+  assert.match(source, new RegExp(adminResponsiveMarker.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")), `admin responsive behavior is missing: ${adminResponsiveMarker}`);
+}
+
+assert.match(source, /@media \(max-width: 64rem\)/, "admin navigation should collapse at tablet width");
 
 console.log("Product scope check passed.");

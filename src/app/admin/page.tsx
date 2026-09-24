@@ -20,7 +20,7 @@ import {
   Users,
   X,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 type ContentStatus = "Published" | "In review" | "Draft" | "Scheduled";
 
@@ -97,6 +97,21 @@ export default function AdminPage() {
   const [activeFilter, setActiveFilter] = useState("All content");
   const [searchTerm, setSearchTerm] = useState("");
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+
+  useEffect(() => {
+    if (!mobileNavOpen) return;
+
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMobileNavOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
+  }, [mobileNavOpen]);
 
   const filteredItems = contentItems.filter((item) => {
     const matchesFilter = activeFilter === "All content" || item.status === activeFilter;
@@ -122,13 +137,16 @@ export default function AdminPage() {
             className="admin-mobile-close"
             type="button"
             aria-label="Close admin navigation"
-            onClick={() => setMobileNavOpen(false)}
+            onClick={() => {
+              setMobileNavOpen(false);
+              menuButtonRef.current?.focus();
+            }}
           >
             <X aria-hidden="true" />
           </button>
         </div>
 
-        <nav className="admin-sidebar__nav" aria-label="Admin navigation">
+        <nav id="admin-navigation" className="admin-sidebar__nav" aria-label="Admin navigation">
           <p className="admin-nav-label">Workspace</p>
           {navigation.map(([label, Icon]) => (
             <button
@@ -173,9 +191,12 @@ export default function AdminPage() {
       <main className="admin-main">
         <header className="admin-topbar">
           <button
+            ref={menuButtonRef}
             className="admin-mobile-menu"
             type="button"
             aria-label="Open admin navigation"
+            aria-expanded={mobileNavOpen}
+            aria-controls="admin-navigation"
             onClick={() => setMobileNavOpen(true)}
           >
             <Menu aria-hidden="true" />
@@ -266,11 +287,11 @@ export default function AdminPage() {
                   <tbody>
                     {filteredItems.map((item) => (
                       <tr key={item.title}>
-                        <td><strong>{item.title}</strong><small>{item.owner}</small></td>
-                        <td>{item.type}</td>
-                        <td><span className={item.language === "ID only" ? "admin-language admin-language--missing" : "admin-language"}>{item.language}</span></td>
-                        <td>{item.updated}</td>
-                        <td><span className={`admin-status admin-status--${item.status.toLowerCase().replace(" ", "-")}`}>{item.status}</span></td>
+                        <td data-label="Content"><strong>{item.title}</strong><small>{item.owner}</small></td>
+                        <td data-label="Type">{item.type}</td>
+                        <td data-label="Language"><span className={item.language === "ID only" ? "admin-language admin-language--missing" : "admin-language"}>{item.language}</span></td>
+                        <td data-label="Updated">{item.updated}</td>
+                        <td data-label="Status"><span className={`admin-status admin-status--${item.status.toLowerCase().replace(" ", "-")}`}>{item.status}</span></td>
                       </tr>
                     ))}
                   </tbody>
