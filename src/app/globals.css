@@ -846,8 +846,6 @@ h1 {
 
 .texture-band {
   background-color: var(--simh-sand);
-  background-image: var(--simh-texture-image);
-  background-size: 28rem auto;
 }
 
 .home-split-section {
